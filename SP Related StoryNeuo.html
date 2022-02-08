@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SP RELATED STORY TEST</title>
+</head>
+<body>
+
+<style>
+    .sp-button{
+        width: 329px;
+        height: 42px;
+        /* State Press Colors/State Press Maroon */
+        background: #83001E;
+        box-shadow: 3px 3px 5px #19191963;
+        border-radius: 22px;
+        color: #FAFAFA;
+        border: 0;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 10px;
+        font-family: "neue-haas-unica", "Helvetica", "Arial", sans-serif;
+        pointer-events: auto;
+    }
+    .sp-button:hover{
+        background: #9D0226;
+
+    }
+
+    .sp-button-grad{
+        width: 329px;
+        height: 42px;
+        /* State Press Colors/State Press Maroon */
+        background: linear-gradient(90.8deg, #83001E 1.82%, #83004F 99.67%);
+        box-shadow: -4px -4px 8px #FFCDD8, 4px 4px 8px #B05368;
+        border-radius: 38px;
+        color: #FAFAFA;
+        border: 0;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 10px;
+        font-family: "neue-haas-unica", "Helvetica", "Arial", sans-serif;
+        transition: 0.5s;
+        pointer-events: auto;
+    }
+    .sp-button-grad:hover{
+        background: linear-gradient(90.8deg, #8c001e 1.82%, #8d0056 99.67%);
+        box-shadow: -2px -2px 8px #FFCDD8, 2px 2px 8px #B05368;
+        transition: 0.5s;
+        pointer-events: ;
+    }
+
+    .sp-button-box-grad {
+        display: flex;
+        flex-direction: column;
+        background: conic-gradient(from 179.93deg at 49.93% 45.19%, #D793A2 0deg, #CD6D95 108.75deg, #D891A1 196.87deg, #E394CD 300deg, #D891A0 360deg);
+        border-radius: 42px;
+        width: fit-content;
+        padding: 20px;
+    }
+</style>
+
+<div style="display: flex; flex-direction: column">
+    <button class="sp-button" onclick=" window.open('http://statepress.com','_blank')">
+        Story headline here in sentence case
+    </button>
+    <button class="sp-button" onclick=" window.open('http://statepress.com','_blank')">
+        Second story headline here in sentence
+    </button>
+    <button class="sp-button" onclick=" window.open('http://statepress.com','_blank')">
+        Third story that is related
+    </button>
+</div>
+<div class="sp-button-box-grad">
+    <button class="sp-button-grad" onclick=" window.open('http://statepress.com','_blank')">
+        Story headline here in sentence case
+    </button>
+    <button class="sp-button-grad" onclick=" window.open('http://statepress.com','_blank')">
+        Second story headline here in sentence
+    </button>
+    <button class="sp-button-grad" onclick=" window.open('http://statepress.com','_blank')">
+        Third story that is related
+    </button>
+</div>
+
+
+</body>
+</html>

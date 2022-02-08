@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMBED THE BODY</title>
+</head>
+<body>
+
+<!--
+ ______     ______   ______     ______   ______
+/\  ___\   /\__  _\ /\  __ \   /\__  _\ /\  ___\
+\ \___  \  \/_/\ \/ \ \  __ \  \/_/\ \/ \ \  __\
+ \/\_____\    \ \_\  \ \_\ \_\    \ \_\  \ \_____\
+  \/_____/     \/_/   \/_/\/_/     \/_/   \/_____/
+
+ ______   ______     ______     ______     ______
+/\  == \ /\  == \   /\  ___\   /\  ___\   /\  ___\
+\ \  _-/ \ \  __<   \ \  __\   \ \___  \  \ \___  \
+ \ \_\    \ \_\ \_\  \ \_____\  \/\_____\  \/\_____\
+  \/_/     \/_/ /_/   \/_____/   \/_____/   \/_____/
+-Zach Van Arsdale for The State Press (CC BY 4.0) -->
+
+<figure>
+<!--Always import these scripts, intersection observer might still be needed for an older browser-->
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+
+<!--Set the style for the scrolly section-->
+    <style>
+        .scrolly {
+            /* FOR DEBUG ONLY */
+            /*border: 4px dashed blue;*/
+        }
+
+        .scrolly-graphics {
+            /*div that contains all the graphics*/
+            height: 100vh;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 0;
+        }
+
+        .scrolly-graphic {
+            /*div that contains each graphic*/
+            height: 100vh;
+            position: absolute;
+            /*display:none makes graphics not show when they are not active*/
+            display: none;
+        }
+
+        .scrolly-graphic.is-active {
+            /*Makes graphic show when active, this is what to add changes to for the active image*/
+            display: block;
+        }
+
+        .scrolly-graphic-content {
+            /*The graphic*/
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scrolly-step {
+            /*How big the 'step' is, which is how far the user scrolls*/
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+            -webkit-transform: translate3d(0, 0, 0); /* fixes safari bug */
+            /* FOR DEBUG ONLY */
+            /*outline: 2px dashed red;*/
+            /*background-color: rgba(255, 0, 0, 0.5);*/
+            /*margin-bottom: 100px;*/
+        }
+
+        .scrolly-step-short {
+            /*makes the step shorter (put after scrolly step)*/
+            height: 50vh;
+        }
+
+        .scrolly-step-content {
+            /*The size color and shape of the box containing the text*/
+            background: #D8C27F;
+            box-shadow: 2px 4px 10px rgba(19, 30, 43, 0.3);
+            border-radius: 20px;
+            /*color: ;*/
+            padding: 1rem;
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .scrolly-step-content p {
+            /*modifies the text in the box in <p>*/
+            padding-bottom: 0px;
+            font-size: 22px;
+        }
+
+        .scrolly-fig-caption {
+            /*the caption for author credit*/
+            padding: 1rem;
+            font-size: 1rem;
+            text-align: left;
+            /*SP non-body font stack*/
+            font-family: "neue-haas-unica", "Helvetica", "Arial", sans-serif;
+        }
+        /*FOR SMALLER DESKTOP*/
+        @media screen and (min-width: 1024px){
+            .scrolly-fig-caption {
+            /*in case you need to change positioning based on screen size*/
+            }
+        }
+        /*FOR BIGGER DESKTOP*/
+        @media screen and (min-width: 1440px){
+            .scrolly-fig-caption {
+                /*in case you need to change positioning based on screen size*/
+            }
+        }
+
+        /*FOR SMALLER DESKTOP*/
+        @media screen and (max-width: 1024px){
+            .scrolly-step-content p {
+                font-size: 20px;
+                line-height: 28px;
+            }
+        }
+        /*FOR MOBILE*/
+        @media screen and (max-width: 480px){
+            .scrolly-step-content p {
+                line-height: 21px;
+                font-size: 17px;
+            }
+        }
+        /*FOR DESKTOP*/
+        @media screen and (min-width: 900px) {
+            /*These set where the text box appears on desktop, on mobile they span the entire screen*/
+            .scrolly-step-content {
+                width: 55%;
+            }
+
+            .scrolly-step-content-right {
+                transform: translateX(50%);
+                margin-right: 15%;
+            }
+
+            .scrolly-step-content-long{
+                width: 80%;
+            }
+
+            .scrolly-step-content-left {
+                transform: translateX(-50%);
+
+            }
+
+        }
+
+        .scrolly-step-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /*transform images if needed*/
+        /*i leave these with 1px so they are easy to modify in chrome debug tools*/
+        #g-slide-1-Artboard_1-img {
+        perspective(500px) translate3d(1px, 1px, 1px)
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-1-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-2-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-2-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-3-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-3-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-4-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-4-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-5-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-5-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-6-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-6-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-7-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-7-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-8-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-8-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-9-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-9-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+        #g-slide-10-Artboard_1-img {
+            transform: perspective(500px) translate3d(1px, 1px, 1px);
+        }
+        @media screen and (max-width: 480px){
+            #g-slide-10-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }#g-slide-11-Artboard_1-img {
+             transform: perspective(500px) translate3d(1px, 1px, 1px);
+         }
+        @media screen and (max-width: 480px){
+            #g-slide-11-Artboard_1-img {
+                transform: perspective(500px) translate3d(1px, 1px, 1px);
+            }
+        }
+
+
+    </style>
+
+<!--START SCROLLY GRAPHICS-->
+    <div class="scrolly scrolly-1">
+    <!--scrolly-1 corresponds to a step, to add more steps, number up both on graphics and steps-->
+        <div class="scrolly-graphics">
+            <div class="scrolly-graphic scrolly-graphic-1 is-active">
+                <div class="scrolly-graphic-content">
+                    <img id="g-slide-1-Artboard_1-img" class="" alt="" src="img/slide-1-Artboard_1.png">
+                </div>
+            </div>
+
+            <div class="scrolly-graphic scrolly-graphic-2">
+                <div class="scrolly-graphic-content">
+                    <img id="g-slide-2-Artboard_1-img" class="" alt="" src="img/slide-2-Artboard_1.png">
+                </div>
+            </div>
+
+            <div class="scrolly-graphic scrolly-graphic-3">
+                <div class="scrolly-graphic-content">
+                    <img id="g-slide-3-Artboard_1-img" class="" alt="" src="img/slide-3-Artboard_1.png">
+                </div>
+            </div>
+
+            <div class="scrolly-graphic scrolly-graphic-4">
+                <div class="scrolly-graphic-content">
+                    <img id="g-slide-4-Artboard_1-img" class="" alt="" src="img/slide-4-Artboard_1.png">
+                </div>
+            </div>
+
+            <div class="scrolly-graphic scrolly-graphic-5">
+                <div class="scrolly-graphic-content">
+                    <img id="g-slide-5-Artboard_1-img" class="" alt="" src="img/slide-5-Artboard_1.png">
+                </div>
+            </div>
+
+
+        </div>
+<!--END SCROLLY GRAPHICS-->
+
+<!--START SCROLLY STEPS AND WORDS-->
+<!--The "data-step" corresponds to the graphic being used-->
+        <div class="scrolly-step" data-step="scrolly-graphic-1">
+            <div class="is-active scrolly-step-content">
+                <p>
+                    This is where you can place some cool text to tell your story. scrolly-step-content class can change how the box looks and the text style.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="scrolly-step" data-step="scrolly-graphic-2" data-scrollama-index="0">
+            <div class="scrolly-step-content">
+                <p>
+                    Natural gas is a fossil fuel released from the ground during oil and gas drilling.
+                </p>
+            </div>
+        </div>
+
+        <div class="scrolly-step" data-step="scrolly-graphic-3" data-scrollama-index="1">
+            <div class="scrolly-step-content scrolly-step-content-right">
+                <p>
+                    Fracking, a common form of drilling, is the process of injecting liquid into the ground at a high pressure, causing rock fixtures to crack open and release the natural gas and oil trapped inside.                </p>
+            </div>
+        </div>
+
+        <div class="scrolly-step" data-step="scrolly-graphic-4" data-scrollama-index="2">
+            <div class="scrolly-step-content scrolly-step-content-right">
+                <p>
+                    The natural gas that is extracted can either be sold on the market, used at the wellsite or disposed of entirely.                 </p>
+            </div>
+        </div>
+
+        <div class="scrolly-step" data-step="scrolly-graphic-5" data-scrollama-index="3">
+            <div class="scrolly-step-content scrolly-step-content-right">
+                <p>
+                    Many drilling companies say it’s safer or more economical to dispose of the gas than to use or sell it. They do this by burning it off, or “flaring.”                </p>
+            </div>
+        </div>
+
+        <!-- END SCROLLY STEPS -->
+    </div>
+
+<!--START OF THE SCROLLY SCRIPT-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //^this Listens to the page
+            //setting names for the various elements to use in functions
+            const scrollys = document.querySelectorAll(".scrolly");
+            scrollys.forEach(function (item) {
+                const scrolly = item;
+                //^this sets a name for each individual scrolly step
+                const scrollyGraphics =
+                    scrolly.querySelectorAll(".scrolly-graphic");
+                const scrollySteps = scrolly.querySelectorAll(".scrolly-step");
+
+                // release the scrollama (initialize)
+                const scroller = scrollama();
+                scroller
+                    .setup({
+                        step: scrollySteps,
+                        offset: 0.75,
+                        debug: false,
+                    //    "step:" defines the step, "offset:" sets where the step triggers. 0.75 is 75% down from the top of the page. "debug:" allows you to see where the trigger is.
+                    //    SET DEBUG FALSE FOR PUBLICATION
+                    })
+                    //this sets what happens when the user scrolls into a step.
+                    .onStepEnter((response) => {
+                        // { element, index, direction } is how this is written
+                        const selector = "." + response.element.dataset.step;
+                        const graphic = scrolly.querySelector(selector);
+                        scrollyGraphics.forEach(function (item) {
+                            if (item == graphic) {
+                                item.classList.add("is-active");
+                            } else {
+                                item.classList.remove("is-active");
+                            }
+                        //    ^This says that if the graphic # = the step # then that graphic has the class "is-active" and if it doesn't it removes the active class
+                        });
+                    });
+            });
+
+        });
+    </script>
+<!--END SCROLLY SCRIPT-->
+
+<!--PUT SCROLLY CREDIT HERE-->
+    <figcaption class="scrolly-fig-caption">
+        Zach Van Arsdale
+    </figcaption>
+
+
+
+</figure>
+
+</body>
+</html>
