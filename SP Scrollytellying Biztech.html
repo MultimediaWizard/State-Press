@@ -34,13 +34,19 @@
             /*border: 4px dashed blue;*/
         }
 
+        @media screen and (max-width: 480px){
+            .scrolly {
+                width: 100%;
+            }
+        }
+
         .scrolly img{
             display: block;
             height: auto;
             max-width: 100%;
             border-style: none;
             /*sets animation for transformed images*/
-            transition: 1.5s;
+            transition: 0.7s;
         }
 
         .scrolly-graphics {
@@ -49,6 +55,8 @@
             overflow: hidden;
             position: sticky;
             top: 0;
+            display: flex;
+            justify-content: center;
             /*makes sure stays below text*/
             z-index: 0;
         }
@@ -58,12 +66,17 @@
             height: 100vh;
             position: absolute;
             /*display:none makes graphics not show when they are not active*/
-            display: none;
+            /*display: none;*/
+            visibility: hidden;
+            transition: visibility 0s, opacity 0.7s linear;
+            opacity: 0;
         }
 
         .scrolly-graphic.is-active {
             /*Makes graphic show when active, this is what to add changes to for the active image*/
-            display: block;
+            visibility: visible;
+            transition: visibility 0s, opacity 0.7s linear;
+            opacity: 1;
         }
 
         .scrolly-graphic-content {
@@ -71,7 +84,8 @@
             height: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            flex-direction: column;
         }
 
         .scrolly-step {
@@ -86,6 +100,7 @@
             /*margin-bottom: 100px;*/
         }
 
+
         .scrolly-step-short {
             /*makes the step shorter (put after scrolly step)*/
             height: 50vh;
@@ -93,19 +108,33 @@
 
         .scrolly-step-content {
             /*The size color and shape of the box containing the text*/
-            background: #D8C27F;
-            box-shadow: 2px 4px 10px rgba(19, 30, 43, 0.3);
-            border-radius: 20px;
+            background: #FAFAFA;
+            /* SP Maroon 100 */
+            border: 3px solid #83001E;
+            box-sizing: border-box;
+            border-radius: 56px;
             /*color: ;*/
             padding: 1rem;
-            width: 85%;
             margin: 0 auto;
+            font-family: Merriweather, sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 120%;
+            width: 55%;
+            box-shadow: 4px 10px 24px rgba(12, 0, 4, 0.24);
+            /* or 24px */
+        }
+
+        @media screen and (max-width: 480px){
+            .scrolly-step-content {
+                width: 100%;
+            }
         }
 
         .scrolly-step-content p {
             /*modifies the text in the box in <p>*/
-            padding-bottom: 0px;
-            font-size: 22px;
+            padding: 10px 15px;
+            margin: 0;
         }
 
         .scrolly-fig-caption {
@@ -146,71 +175,130 @@
         /*FOR DESKTOP*/
         @media screen and (min-width: 480px) {
             /*These set where the text box appears on desktop, on mobile they span the entire screen*/
-            .scrolly-step-content {
-                width: 55%;
-            }
 
-            .scrolly-step-content-right {
+
+            .right {
                 transform: translateX(50%);
-                margin-right: 15%;
+                margin-right: 28%;
             }
 
-            .scrolly-step-content-long{
+            .long{
                 width: 80%;
             }
 
-            .scrolly-step-content-left {
+            .left {
                 transform: translateX(-50%);
+                margin-left: 28%;
 
             }
 
         }
 
-        .scrolly-step-content p:last-child {
+        .scrolly-step-content:last-child {
             margin-bottom: 0;
+        }
+
+        .graphic-box{
+            display: flex;
+            flex-direction: column;
+            transition: ease-in-out;
+            transition-duration: 1s;
+        }
+
+        @media screen and (max-width: 480px){
+            .graphic-box{
+                display: block;
+            }
         }
 
         /*transform images if needed, @media is for mobile*/
         /*i leave these with 1px so they are easy to modify in chrome debug tools*/
-        #img-1 {
-        perspective(500px) translate3d(1px, 1px, 1px)
+        .graphic-1 {
+            transform: perspective(500px) translate3d(1px, 1px, 1px)
         }
         @media screen and (max-width: 480px){
-            #img-1 {
+            .graphic-1 {
                 transform: perspective(500px) translate3d(1px, 1px, 1px);
             }
         }
-        #img-2 {
+        .graphic-2 {
             transform: perspective(500px) translate3d(1px, 1px, 1px);
         }
         @media screen and (max-width: 480px){
-            #img-2 {
+            .graphic-2 {
                 transform: perspective(500px) translate3d(1px, 1px, 1px);
             }
         }
-        #img-3 {
+        .graphic-3 {
             transform: perspective(500px) translate3d(1px, 1px, 1px);
+
         }
         @media screen and (max-width: 480px){
-            #img-3 {
+            .graphic-3 {
                 transform: perspective(500px) translate3d(1px, 1px, 1px);
             }
         }
-        #img-4 {
+        .graphic-4 {
             transform: perspective(500px) translate3d(321px, -467px, 288px);
         }
         @media screen and (max-width: 480px){
-            #img-4 {
+            .graphic-4 {
                 transform: perspective(500px) translate3d(87px, -81px, 378px);
             }
         }
-        #img-5 {
+        .graphic-5 {
             transform: perspective(500px) translate3d(-267px, 250px, 263px);
         }
         @media screen and (max-width: 480px) {
-            #img-5 {
+            .graphic-5 {
                 transform: perspective(500px) translate3d(-34px, 74px, 436px);
             }
+        }
+
+        #.graphic-6 {
+            transform: perspective(500px) translate3d(-267px, 250px, 263px);
+        }
+        @media screen and (max-width: 480px) {
+            #.graphic-6 {
+                transform: perspective(500px) translate3d(-34px, 74px, 436px);
+            }
+        }
+
+    /*span img styles*/
+        .scrolly-caption{
+            margin: 0 auto;
+            font-family: Merriweather, sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        #img-1 {
+            width: 450px;
+        }
+
+        #img-2 {
+            width: 450px;
+        }
+
+        #img-3 {
+            width: 450px;
+        }
+
+        #span-1 {
+            padding-top: 0.5rem;
+            width: 450px;
+
+            /*^change above*/
+        }
+        #span-2 {
+            padding-top: 0.5rem;
+            width: 450px;
+            /*^change above*/
+        }
+        #span-3 {
+            padding-top: 0.5rem;
+            width: 450px;
+            /*^change above*/
         }
 
 
@@ -222,31 +310,55 @@
         <div class="scrolly-graphics">
             <div class="scrolly-graphic scrolly-graphic-1 is-active">
                 <div class="scrolly-graphic-content">
-                    <img id="img-1" class="" alt="" src="img/Frame-1.png">
+                    <!--modify "graphic-#" to change the div that contains the image and caption-->
+                    <div class="graphic-1 graphic-box">
+                    <img id="img-1" class="" alt="" src="https://snworksceo.imgix.net/asp/83d1cbec-0e7c-4221-8dff-754f340f2c74.sized-1000x1000.png?">
+                    <span id="span-1" class="scrolly-caption">
+                        Mikhail Zolotov holds hands with his daughter, Nadya, outside their Moscow apartment building in 1995.
+                    </span>
+                    </div>
                 </div>
             </div>
 
             <div class="scrolly-graphic scrolly-graphic-2">
                 <div class="scrolly-graphic-content">
-                    <img id="img-2" class="" alt="" src="img/Frame-2.png">
+                    <div class="graphic-2 graphic-box">
+                    <img id="img-2" class="" alt="" src="https://snworksceo.imgix.net/asp/f6cdeae9-9a9c-4009-874d-261c0644f7ca.sized-1000x1000.png?">
+                        <span id="span-2" class="scrolly-caption">
+                            Mikhail Zolotov pictured as a young researcher at the Vernadsky Institute in Moscow on an unknown date.
+                        </span>
+                    </div>
                 </div>
             </div>
 
             <div class="scrolly-graphic scrolly-graphic-3">
                 <div class="scrolly-graphic-content">
-                    <img id="img-3" class="" alt="" src="img/Frame-3.png">
+                    <div class="graphic-3 graphic-box">
+                    <img id="img-3" class="" alt="" src="https://snworksceo.imgix.net/asp/997950ec-391b-43a8-a58c-970eaab9c0c7.sized-1000x1000.jpg?">
+                        <span id="span-3" class="scrolly-caption">
+                            Mikhail Zolotov on a field trip in 1985 during his time at the Vernadsky Institute.
+                        </span>
+                    </div>
                 </div>
             </div>
 
             <div class="scrolly-graphic scrolly-graphic-4">
                 <div class="scrolly-graphic-content">
-                    <img id="img-4" class="" alt="" src="img/Frame-3.png">
+                    <img id="img-4" class="" alt="" src="https://snworksceo.imgix.net/asp/0ba3242b-3c47-46b1-bcf8-a24a7728b9cd.sized-1000x1000.jpg?
+">
                 </div>
             </div>
 
             <div class="scrolly-graphic scrolly-graphic-5">
                 <div class="scrolly-graphic-content">
-                    <img id="img-5" class="" alt="" src="img/Frame-3.png">
+                    <img id="img-5" class="" alt="" src="https://snworksceo.imgix.net/asp/02226b12-3cd4-4e0d-9e40-351928948916.sized-1000x1000.png?">
+                </div>
+            </div>
+
+            <div class="scrolly-graphic scrolly-graphic-6">
+                <div class="scrolly-graphic-content">
+                    <img id="img-6" class="" alt="" src="https://snworksceo.imgix.net/asp/b305ac00-932b-41f9-b205-0bb92e5e6c29.sized-1000x1000.jpg?
+">
                 </div>
             </div>
 
@@ -257,18 +369,19 @@
 <!--START SCROLLY STEPS AND WORDS-->
 <!--The "data-step" corresponds to the graphic being used-->
         <div class="scrolly-step" data-step="scrolly-graphic-1">
-            <div class="is-active scrolly-step-content">
+            <!--change placement of text here-->
+            <div class="is-active scrolly-step-content right">
                 <p>
-                    This is where you can place some cool text to tell your story. scrolly-step-content class can change how the box looks and the text style.
+                    During the turmoil and the Soviet Union's slow demise, Mikhail Zolotov was living in an apartment in Moscow with his wife and two children.
                 </p>
             </div>
         </div>
 
 
         <div class="scrolly-step" data-step="scrolly-graphic-2" data-scrollama-index="0">
-            <div class="scrolly-step-content">
+            <div class="scrolly-step-content right">
                 <p>
-                    The images change each time when you place different images in the graphic steps.
+                    Zolotov, a research professor at ASU, studied geochemistry in the Soviet Union during the 1980s and early '90s before joining the University where he has taught classes and conducted research for spacecraft that will explore Jupiter’s moon Europa and Venus.
                 </p>
             </div>
         </div>
@@ -276,7 +389,7 @@
         <div class="scrolly-step" data-step="scrolly-graphic-3" data-scrollama-index="1">
             <div class="scrolly-step-content scrolly-step-content-right">
                 <p>
-                    You can also zoom on images...
+                    Zolotov never fails to be humble, and he laughs at memories of his past. A prevalent Russian accent marks his words, one he has kept after living in the U.S. for more than 20 years.
                 </p>
             </div>
         </div>
@@ -284,7 +397,7 @@
         <div class="scrolly-step" data-step="scrolly-graphic-4" data-scrollama-index="2">
             <div class="scrolly-step-content scrolly-step-content-right">
                 <p>
-                    The natural gas that is extracted can either be sold on the market, used at the wellsite or disposed of entirely.
+                    “To me, to look at my life, it was the most interesting time,” Zolotov said. “(There was) a lot of hope, because before it was a gray environment without prospects for everybody, and then also confrontation with America — so you know, relatively dark ages.”
                 </p>
             </div>
         </div>
@@ -292,8 +405,15 @@
         <div class="scrolly-step" data-step="scrolly-graphic-5" data-scrollama-index="3">
             <div class="scrolly-step-content scrolly-step-content-right">
                 <p>
-                    Many drilling companies say it’s safer or more economical to dispose of the gas than to use or sell it. They do this by burning it off, or “flaring.”
+                    Zolotov was born in Moscow in 1960 to parents who were well-respected scientists. His mother, Galina Zolotova, is an analytical chemist who received a doctoral degree from Moscow State University. His father, Yuri Zolotov,is an analytical chemist who is considered a leader in the field and has received multiple state awards.
                 </p>
+            </div>
+        </div>
+
+        <div class="scrolly-step" data-step="scrolly-graphic-6" data-scrollama-index="4">
+            <div class="scrolly-step-content scrolly-step-content-right">
+                <p>
+                    Zolotov met many scientists throughout his youth. Galina, who taught geochemistry students at the Vernadsky Institute of Geochemistry and Analytical Chemistry of Russian Academy of Sciences, influenced Zolotov to join the field.                </p>
             </div>
         </div>
 
@@ -334,6 +454,26 @@
                             } else {
                                 item.classList.remove("is-active");
                             }
+
+                            const active = scrolly.querySelectorAll(".is-active")
+                            const right = scrolly.querySelector(".right")
+                            const left = scrolly.querySelector(".left")
+                            const graphicFlex = scrolly.querySelector(".scrolly-graphics")
+                            active.forEach(function (item) {
+                                if (item == right) {
+                                    graphicFlex.classList.add("right-flex")
+                                    graphicFlex.classList.remove("left-flex")
+                                }
+                                if (item == left) {
+                                    graphicFlex.classList.add("left-flex")
+                                    graphicFlex.classList.remove("right-flex")
+                                }
+                                else {
+                                    graphicFlex.classList.remove("left-flex")
+                                    graphicFlex.classList.remove("right-flex")
+                                }
+                            })
+
                         //    ^This says that if the graphic # = the step # then that graphic has the class "is-active" and if it doesn't it removes the active class
                         });
                     });
@@ -345,7 +485,7 @@
 
 <!--PUT SCROLLY CREDIT HERE-->
     <figcaption class="scrolly-fig-caption">
-        Zach Van Arsdale
+        Zach Van Arsdale, images courtesy of Yuri Zolotov and Mikhail Zolotov
     </figcaption>
 
 
