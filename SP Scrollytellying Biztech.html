@@ -61,6 +61,14 @@
             z-index: 0;
         }
 
+        .right-flex{
+        justify-content: end;
+        }
+
+        .left-flex{
+            justify-content: start;
+        }
+
         .scrolly-graphic {
             /*div that contains each graphic*/
             height: 100vh;
@@ -81,7 +89,7 @@
 
         .scrolly-graphic-content {
             /*The graphic*/
-            height: 100%;
+            height: 80%;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -193,6 +201,7 @@
             }
 
         }
+
 
         .scrolly-step-content:last-child {
             margin-bottom: 0;
@@ -345,20 +354,27 @@
             <div class="scrolly-graphic scrolly-graphic-4">
                 <div class="scrolly-graphic-content">
                     <img id="img-4" class="" alt="" src="https://snworksceo.imgix.net/asp/0ba3242b-3c47-46b1-bcf8-a24a7728b9cd.sized-1000x1000.jpg?
-">
+">                      <span id="span-4" class="scrolly-caption">
+                            Mikhail Zolotov (center) sits with his father, Yuri, and daughter, Nadya, on an unknown date.
+                        </span>
                 </div>
             </div>
 
             <div class="scrolly-graphic scrolly-graphic-5">
                 <div class="scrolly-graphic-content">
                     <img id="img-5" class="" alt="" src="https://snworksceo.imgix.net/asp/02226b12-3cd4-4e0d-9e40-351928948916.sized-1000x1000.png?">
+                    <span id="span-5" class="scrolly-caption">
+                            An 8-year-old Mikhail Zolotov (center) poses for a picture with his family.
+                        </span>
                 </div>
             </div>
 
             <div class="scrolly-graphic scrolly-graphic-6">
                 <div class="scrolly-graphic-content">
-                    <img id="img-6" class="" alt="" src="https://snworksceo.imgix.net/asp/b305ac00-932b-41f9-b205-0bb92e5e6c29.sized-1000x1000.jpg?
-">
+                    <img id="img-6" class="" alt="" src="https://snworksceo.imgix.net/asp/b305ac00-932b-41f9-b205-0bb92e5e6c29.sized-1000x1000.jpg?">
+                        <span id="span-6" class="scrolly-caption">
+                            A young Mikhail Zolotov stands next to his mother, Galina, at the Vernadsky Institute in Moscow in 1967.
+                        </span>
                 </div>
             </div>
 
@@ -370,7 +386,7 @@
 <!--The "data-step" corresponds to the graphic being used-->
         <div class="scrolly-step" data-step="scrolly-graphic-1">
             <!--change placement of text here-->
-            <div class="is-active scrolly-step-content right">
+            <div class="is-active scrolly-step-content">
                 <p>
                     During the turmoil and the Soviet Union's slow demise, Mikhail Zolotov was living in an apartment in Moscow with his wife and two children.
                 </p>
@@ -379,7 +395,7 @@
 
 
         <div class="scrolly-step" data-step="scrolly-graphic-2" data-scrollama-index="0">
-            <div class="scrolly-step-content right">
+            <div class="scrolly-step-content">
                 <p>
                     Zolotov, a research professor at ASU, studied geochemistry in the Soviet Union during the 1980s and early '90s before joining the University where he has taught classes and conducted research for spacecraft that will explore Jupiter’s moon Europa and Venus.
                 </p>
@@ -387,7 +403,7 @@
         </div>
 
         <div class="scrolly-step" data-step="scrolly-graphic-3" data-scrollama-index="1">
-            <div class="scrolly-step-content scrolly-step-content-right">
+            <div class="scrolly-step-content">
                 <p>
                     Zolotov never fails to be humble, and he laughs at memories of his past. A prevalent Russian accent marks his words, one he has kept after living in the U.S. for more than 20 years.
                 </p>
@@ -395,7 +411,7 @@
         </div>
 
         <div class="scrolly-step" data-step="scrolly-graphic-4" data-scrollama-index="2">
-            <div class="scrolly-step-content scrolly-step-content-right">
+            <div class="scrolly-step-content">
                 <p>
                     “To me, to look at my life, it was the most interesting time,” Zolotov said. “(There was) a lot of hope, because before it was a gray environment without prospects for everybody, and then also confrontation with America — so you know, relatively dark ages.”
                 </p>
@@ -403,7 +419,7 @@
         </div>
 
         <div class="scrolly-step" data-step="scrolly-graphic-5" data-scrollama-index="3">
-            <div class="scrolly-step-content scrolly-step-content-right">
+            <div class="scrolly-step-content">
                 <p>
                     Zolotov was born in Moscow in 1960 to parents who were well-respected scientists. His mother, Galina Zolotova, is an analytical chemist who received a doctoral degree from Moscow State University. His father, Yuri Zolotov,is an analytical chemist who is considered a leader in the field and has received multiple state awards.
                 </p>
@@ -429,8 +445,7 @@
             scrollys.forEach(function (item) {
                 const scrolly = item;
                 //^this sets a name for each individual scrolly step
-                const scrollyGraphics =
-                    scrolly.querySelectorAll(".scrolly-graphic");
+                const scrollyGraphics = scrolly.querySelectorAll(".scrolly-graphic");
                 const scrollySteps = scrolly.querySelectorAll(".scrolly-step");
 
                 // release the scrollama (initialize)
@@ -438,7 +453,7 @@
                 scroller
                     .setup({
                         step: scrollySteps,
-                        offset: 0.75,
+                        offset: 0.85,
                         debug: false,
                     //    "step:" defines the step, "offset:" sets where the step triggers. 0.75 is 75% down from the top of the page. "debug:" allows you to see where the trigger is.
                     //    SET DEBUG FALSE FOR PUBLICATION
@@ -454,25 +469,34 @@
                             } else {
                                 item.classList.remove("is-active");
                             }
+                            const scrollyStepAlign = scrolly.querySelectorAll(".scrolly-step-content");
+                            // var right = scrollyStepAlign.classList.contains("right");
+                            // var left = scrollyStepAlign.classList.contains("left");
 
-                            const active = scrolly.querySelectorAll(".is-active")
-                            const right = scrolly.querySelector(".right")
-                            const left = scrolly.querySelector(".left")
-                            const graphicFlex = scrolly.querySelector(".scrolly-graphics")
-                            active.forEach(function (item) {
-                                if (item == right) {
-                                    graphicFlex.classList.add("right-flex")
-                                    graphicFlex.classList.remove("left-flex")
+                            const graphicFlex = scrolly.querySelector(".scrolly-graphics");
+
+                            var active = scrolly.getElementsByClassName(".is-active");
+                                if (scrollyGraphics.className === 'scrolly-graphic scrolly-graphic-1 right is-active'){
+                                    graphicFlex.style.justifyContent='flex-end';
                                 }
-                                if (item == left) {
-                                    graphicFlex.classList.add("left-flex")
-                                    graphicFlex.classList.remove("right-flex")
+                                if (scrollyGraphics.className === 'scrolly-graphic scrolly-graphic-1 left is-active'){
+                                    graphicFlex.style.justifyContent='flex-start'
                                 }
                                 else {
-                                    graphicFlex.classList.remove("left-flex")
-                                    graphicFlex.classList.remove("right-flex")
+                                    graphicFlex.style.justifyContent='center'
                                 }
-                            })
+
+                            // active.getAttribute(class) {
+                            //     if (right) {
+                            //         graphicFlex.style.justifyContent='flex-end'
+                            //     }
+                            //     if (left) {
+                            //         graphicFlex.style.justifyContent='flex-start'
+                            //     }
+                            //     else {
+                            //         graphicFlex.style.justifyContent='center'
+                            //     }
+                            // })
 
                         //    ^This says that if the graphic # = the step # then that graphic has the class "is-active" and if it doesn't it removes the active class
                         });
