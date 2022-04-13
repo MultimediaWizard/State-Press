@@ -26,6 +26,15 @@
         z-index: 1;
         border-radius: 0px;
     }
+    /*turns off horizontal scroll for mobile*/
+    @media only screen and (max-width: 480px) {
+        .horizontal-scroll{
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            flex-direction: column;
+        }
+    }
 
     .sp-expand-button{
         width: 60px;
@@ -50,6 +59,16 @@
         border-radius: 50%;
         transition: all 220ms;
     }
+
+    @media only screen and (max-width: 480px) {
+        .sp-minimize-button {
+            margin-left: 85vw;
+            margin-top: 90vh;
+            width: 25px;
+            height: 25px;
+        }
+    }
+
     .sp-minimize-button:hover,.sp-minimize-button:focus {
         transform: rotateZ(90deg);
         background: #879ed7;
@@ -127,6 +146,7 @@
         --txt-b: black;
         --txt-c: yellow;
         --f-size: 18px;
+        --f-size-m: 16px;
         --f-def: ;
         --f-allcap: ;
         --f-em: ;
@@ -151,26 +171,55 @@
         padding-right: 10px;
         padding-left: 10px;
     }
+
     .poem-words{
         width: max-content;
         padding-right: 20px;
+        font-size: var(--f-size);
     }
     /*Offsets are done by styling <ul>*/
     .poem-offset-1{
         list-style-type: none;
-        line-height: 1.5em;
+        line-height: 0.5em;
         margin-left: 1em;
     }
     .poem-offset-2{
         list-style-type: none;
-        margin-left: 2.25em;
+        margin-left: 1em;
 
     }
     .poem-offset-3 {
         list-style-type: none;
-        margin-left: 3.50em;
+        margin-left: 1.5em;
     }
+    /*mobile styling for poems*/
+    @media only screen and (max-width: 480px) {
+        .poem-box{
+            flex-direction: column;
+            width: 100vw;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .poem-words{
+            width: 100%;
+            padding-right: 20px;
+            font-size: var(--f-size-m);
+        }
+        .poem-offset-1{
+            list-style-type: none;
+            line-height: 1.5em;
+            margin-left: 1em;
+        }
+        .poem-offset-2{
+            list-style-type: none;
+            margin-left: 2.25em;
 
+        }
+        .poem-offset-3 {
+            list-style-type: none;
+            margin-left: 3.50em;
+        }
+    }
     /*individual poem*/
     .dreaming-costs{
         color: var(--txt-w);
