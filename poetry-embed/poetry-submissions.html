@@ -12,24 +12,108 @@
 <!--Styling-->
 <style>
 /*There is js at the bottom that turn vertical scroll -> horizontal*/
+
+    .sp-embed{
+
+    }
+
     .horizontal-scroll{
         height: 100%;
         overflow-x: scroll;
         overflow-y: hidden;
         display: flex;
         flex-direction: row;
+        z-index: 1;
+        border-radius: 0px;
     }
 
-    .sp-embed-button{
+    .sp-expand-button{
+        width: 60px;
+    }
 
+    .sp-minimize-button{
+        position: fixed;
+        margin-left: 90vw;
+        margin-top: 90vh;
+        margin-right: 0;
+        cursor:pointer;
+        width: 37px;
+        height: 37px;
+        stroke: currentColor;
+        fill: currentColor;
+        z-index: 2;
+        font-size: 3em;
+        vector-effect: non-scaling-stroke;
+        border: 0;
+        padding: 8px;
+        background: #A7BCE6;
+        border-radius: 50%;
+        transition: all 220ms;
+    }
+    .sp-minimize-button:hover,.sp-minimize-button:focus {
+        transform: rotateZ(90deg);
+        background: #879ed7;
+    }
+
+    .sp-minimize-button-hidden{
+        display: none;
+    }
+
+    /*button for screen readers*/
+    .visually-hidden {
+        position: absolute !important;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0 !important;
+        border: 0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
     }
 
     .sp-embed-minimized{
-
+        width: 100%;
+        height: 300px;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        /*no work why*/
+        transition: 3.2s;
+    }
+    /*temp settings, make sure to change to device sizes*/
+    .sp-embed-expanded{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: auto;
+        border-radius: 0;
+        transition: 3.2s;
     }
 
-    .sp-embed-expanded{
-        margin-left: ;
+    .enable-interaction{
+        display: none;
+    }
+
+    .disable-interaction{
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        background: rgba(51, 51, 51, 0.75);
+        width: 100%;
+        height: 350px;
+        /*z-index just makes sure it is always on top*/
+        z-index: 3;
+        border-radius: 30px;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-20px);
+
+        /*this will not blur on firefox <100*/
+        backdrop-filter: blur(8px);
+        /*quick fix for edge 17-18*/
+        -webkit-backdrop-filter: blur(8px);
     }
 
     /*color-font-stack*/
@@ -98,50 +182,120 @@
 
 </style>
 
-<div class="horizontal-scroll sp-embed-expanded">
-    <div class="poem-box bg-grn" id="1">
-<!--dreaming costs money-->
-        <div class="poem-words dreaming-costs">
+<!--embed start-->
+<div class="sp-embed sp-embed-minimized">
+<!--container below prevents interaction until expanded and shows preview-->
+    <div id="disable-interact" class="disable-interaction">
+        <img src="">
+        <button class="sp-expand-button">View</button>
+    </div>
+    <div class="horizontal-scroll">
+<!--button time-->
+        <svg class="sp-minimize-button sp-minimize-button-hidden">
+            <g>
+                <path d="M3 25L14.2157 13.7843L25 3" stroke="#516da6" stroke-width="6" stroke-linecap="round"/>
+                <path d="M3 3L14.2157 14.2157L25 25" stroke="#516da6" stroke-width="6" stroke-linecap="round"/>
+            </g>
+            <p class="visually-hidden">Select to close the page</p>
+        </svg>
+<!--poem time-->
+        <div class="poem-box bg-grn" id="1">
+    <!--dreaming costs money-->
+            <div class="poem-words dreaming-costs">
+                <p>
+                    because dreaming costs money, my dear <br>
+                    By Carolina Quintero
+                </p>
+                    <p>
+                        <em>where are you coming from</em>     always coming from home
+                    </p>
+                    <ul class="poem-offset-1">
+                        <li>her spanish is solid like honey <br>
+                            sounds candied with authenticity</li>
+                        <p></p>
+                        <li>futile tongue tastes of metal<br>
+                            swallowing copper for ten years now</li>
+                    </ul>
+                    <p>
+                        <em>where are you returning to</em>     there is a home here
+                    </p>
+                    <ul class="poem-offset-1">
+                        <li>mouth rooftops extinguish the American dream when her kids make her tongue the greatest comedian</li>
+                        <p></p>
+                        <li>mijo sticks his tongue to the roof of his mouth<br>
+                            trapping the sour feeling of spanish—</li>
+                    </ul>
+                    <p>
+                        <em>pull up to the right for inspection</em>     home seems far away now
+                    </p>
+                    <ul class="poem-offset-1">
+                        <li>he watches his dented words become hail<br>
+                            not escaping to contaminate her sweetness</li>
+                        <p></p>
+                        <li>mijo and her scavenge for the American dream<br>
+                            dirt drinks their bloody fingernails</li>
+                    </ul>
+                <p>
+                    <em>they cut my tongue into thirds</em>   mijo cannot fake surprise
+                </p>
+                <ul class="poem-offset-3">
+                    <li>he lets his tears clean<br>
+                    the dirt under their nails</li>
+                    <p></p>
+                    <li>she understands politicians<br>
+                        who wear discount tags<br>
+                        on their hearts<br>
+                        spit aliens out with naked<br>
+                        heels raw with contempt</li>
+                </ul>
+                <p>
+                    <em>not from here   not from there   not from anywhere</em>
+                </p>
+                <hr>
+            </div>
+            <div>
+                <img src="../img/test-img.png"  width="900px"/>
+            </div>
+
+        </div>
+        <div class="poem-box bg-ylw" id="2">
+            <!--dreaming costs money-->
             <p>
                 because dreaming costs money, my dear <br>
                 By Carolina Quintero
             </p>
-                <p>
-                    <em>where are you coming from</em>     always coming from home
-                </p>
-                <ul class="poem-offset-1">
-                    <li>her spanish is solid like honey <br>
-                        sounds candied with authenticity</li>
-                    <p></p>
-                    <li>futile tongue tastes of metal<br>
-                        swallowing copper for ten years now</li>
-                </ul>
-                <p>
-                    <em>where are you returning to</em>     there is a home here
-                </p>
-                <ul class="poem-offset-1">
-                    <li>mouth rooftops extinguish the American dream when her kids make her tongue the greatest comedian</li>
-                    <p></p>
-                    <li>mijo sticks his tongue to the roof of his mouth<br>
-                        trapping the sour feeling of spanish—</li>
-                </ul>
-                <p>
-                    <em>pull up to the right for inspection</em>     home seems far away now
-                </p>
-                <ul class="poem-offset-1">
-                    <li>he watches his dented words become hail<br>
-                        not escaping to contaminate her sweetness</li>
-                    <p></p>
-                    <li>mijo and her scavenge for the American dream<br>
-                        dirt drinks their bloody fingernails</li>
-                </ul>
+            <p>
+                <em>where are you coming from</em>     always coming from home
+            </p>
+            <ul class="poem-offset-1">
+                <li>her spanish is solid like honey <br>
+                    sounds candied with authenticity</li>
+                <li>futile tongue tastes of metal<br>
+                    swallowing copper for ten years now</li>
+            </ul>
+            <p>
+                <em>where are you returning to</em>     there is a home here
+            </p>
+            <ul class="poem-offset-1">
+                <li>outh rooftops extinguish the American dream when her kids make her tongue the greatest comedian</li>
+                <li>mijo sticks his tongue to the roof of his mouth<br>
+                    trapping the sour feeling of spanish—</li>
+            </ul>
+            <p>
+                <em>pull up to the right for inspection</em>     home seems far away now
+            </p>
+            <ul class="poem-offset-1">
+                <li>he watches his dented words become hail<br>
+                    not escaping to contaminate her sweetness</li>
+                <li>mijo and her scavenge for the American dream<br>
+                    dirt drinks their bloody fingernails</li>
+            </ul>
             <p>
                 <em>they cut my tongue into thirds</em>   mijo cannot fake surprise
             </p>
             <ul class="poem-offset-3">
                 <li>he lets his tears clean<br>
-                the dirt under their nails</li>
-                <p></p>
+                    the dirt under their nails</li>
                 <li>she understands politicians<br>
                     who wear discount tags<br>
                     on their hearts<br>
@@ -153,73 +307,42 @@
             </p>
             <hr>
         </div>
-        <div>
-            <img src="../img/test-img.png"  width="900px"/>
+        <div class="poem-box" id="3">
+
         </div>
-
     </div>
-    <div class="poem-box bg-ylw" id="2">
-        <!--dreaming costs money-->
-        <p>
-            because dreaming costs money, my dear <br>
-            By Carolina Quintero
-        </p>
-        <p>
-            <em>where are you coming from</em>     always coming from home
-        </p>
-        <ul class="poem-offset-1">
-            <li>her spanish is solid like honey <br>
-                sounds candied with authenticity</li>
-            <li>futile tongue tastes of metal<br>
-                swallowing copper for ten years now</li>
-        </ul>
-        <p>
-            <em>where are you returning to</em>     there is a home here
-        </p>
-        <ul class="poem-offset-1">
-            <li>outh rooftops extinguish the American dream when her kids make her tongue the greatest comedian</li>
-            <li>mijo sticks his tongue to the roof of his mouth<br>
-                trapping the sour feeling of spanish—</li>
-        </ul>
-        <p>
-            <em>pull up to the right for inspection</em>     home seems far away now
-        </p>
-        <ul class="poem-offset-1">
-            <li>he watches his dented words become hail<br>
-                not escaping to contaminate her sweetness</li>
-            <li>mijo and her scavenge for the American dream<br>
-                dirt drinks their bloody fingernails</li>
-        </ul>
-        <p>
-            <em>they cut my tongue into thirds</em>   mijo cannot fake surprise
-        </p>
-        <ul class="poem-offset-3">
-            <li>he lets his tears clean<br>
-                the dirt under their nails</li>
-            <li>she understands politicians<br>
-                who wear discount tags<br>
-                on their hearts<br>
-                spit aliens out with naked<br>
-                heels raw with contempt</li>
-        </ul>
-        <p>
-            <em>not from here   not from there   not from anywhere</em>
-        </p>
-        <hr>
-    </div>
-    <div class="poem-box" id="3">
-
-    </div>
-
 </div>
 
+
 <script>
-//vertical scroll -> horizontal scroll
-const scrollableElement = document.querySelector(".horizontal-scroll")
-scrollableElement.addEventListener('wheel', (ev) => {
-    ev.preventDefault();
-    scrollableElement.scrollLeft += ev.deltaY + ev.deltaX;
-});
+
+
+    //vertical scroll -> horizontal scroll
+    let scrollableElement = document.querySelector(".horizontal-scroll")
+    scrollableElement.addEventListener('wheel', (ev) => {
+        ev.preventDefault();
+        scrollableElement.scrollLeft += ev.deltaY + ev.deltaX;
+    });
+
+    //expand retract button
+
+    let embed = document.querySelector(".sp-embed")
+    let disabledInteract = document.querySelector("#disable-interact")
+    let expandButton = document.querySelector(".sp-expand-button")
+    let minimizeButton = document.querySelector(".sp-minimize-button");
+
+    expandButton.addEventListener("mousedown", e => {
+        embed.setAttribute("class","sp-embed sp-embed-expanded")
+        disabledInteract.setAttribute("class","enable-interaction")
+        minimizeButton.setAttribute("class","sp-minimize-button")
+
+    });
+
+    minimizeButton.addEventListener("mousedown", e => {
+        embed.setAttribute("class","sp-embed sp-embed-minimized")
+        disabledInteract.setAttribute("class","disable-interaction")
+        minimizeButton.setAttribute("class","sp-minimize-button sp-minimize-button-hidden")
+    });
 
 
 
