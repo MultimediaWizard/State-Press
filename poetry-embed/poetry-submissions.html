@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Poetry Yeet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<!--TODO *figure out plane paralax *figure out full page width, dev button that expands and retracts *turn off horizontal for mobile)-->
+
+<!--Styling-->
+<style>
+/*There is js at the bottom that turn vertical scroll -> horizontal*/
+    .horizontal-scroll{
+        height: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sp-embed-button{
+
+    }
+
+    .sp-embed-minimized{
+
+    }
+
+    .sp-embed-expanded{
+        margin-left: ;
+    }
+
+    /*color-font-stack*/
+    /*note: these are set as global variables so changing them is easier across the whole doc*/
+    :root {
+        --grn: green;
+        --ylw: yellow;
+        --red: red;
+        --blue: lightblue;
+        --txt-w: #f1f1f1;
+        --txt-b: black;
+        --txt-c: yellow;
+        --f-size: 18px;
+        --f-def: ;
+        --f-allcap: ;
+        --f-em: ;
+        --f-title: ;
+    }
+
+    .bg-grn {
+        background-color: var(--grn);
+    }
+    .bg-ylw {
+        background-color: var(--ylw);
+    }
+    .bg-red {
+        background-color: var(--red);
+    }
+
+    /*Each poem is contained in this box*/
+    .poem-box{
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .poem-words{
+        width: max-content;
+        padding-right: 20px;
+    }
+    /*Offsets are done by styling <ul>*/
+    .poem-offset-1{
+        list-style-type: none;
+        line-height: 1.5em;
+        margin-left: 1em;
+    }
+    .poem-offset-2{
+        list-style-type: none;
+        margin-left: 2.25em;
+
+    }
+    .poem-offset-3 {
+        list-style-type: none;
+        margin-left: 3.50em;
+    }
+
+    /*individual poem*/
+    .dreaming-costs{
+        color: var(--txt-w);
+        }
+    .poem-2{
+        color: var(--txt-w)
+    }
+
+
+</style>
+
+<div class="horizontal-scroll sp-embed-expanded">
+    <div class="poem-box bg-grn" id="1">
+<!--dreaming costs money-->
+        <div class="poem-words dreaming-costs">
+            <p>
+                because dreaming costs money, my dear <br>
+                By Carolina Quintero
+            </p>
+                <p>
+                    <em>where are you coming from</em>     always coming from home
+                </p>
+                <ul class="poem-offset-1">
+                    <li>her spanish is solid like honey <br>
+                        sounds candied with authenticity</li>
+                    <p></p>
+                    <li>futile tongue tastes of metal<br>
+                        swallowing copper for ten years now</li>
+                </ul>
+                <p>
+                    <em>where are you returning to</em>     there is a home here
+                </p>
+                <ul class="poem-offset-1">
+                    <li>mouth rooftops extinguish the American dream when her kids make her tongue the greatest comedian</li>
+                    <p></p>
+                    <li>mijo sticks his tongue to the roof of his mouth<br>
+                        trapping the sour feeling of spanish—</li>
+                </ul>
+                <p>
+                    <em>pull up to the right for inspection</em>     home seems far away now
+                </p>
+                <ul class="poem-offset-1">
+                    <li>he watches his dented words become hail<br>
+                        not escaping to contaminate her sweetness</li>
+                    <p></p>
+                    <li>mijo and her scavenge for the American dream<br>
+                        dirt drinks their bloody fingernails</li>
+                </ul>
+            <p>
+                <em>they cut my tongue into thirds</em>   mijo cannot fake surprise
+            </p>
+            <ul class="poem-offset-3">
+                <li>he lets his tears clean<br>
+                the dirt under their nails</li>
+                <p></p>
+                <li>she understands politicians<br>
+                    who wear discount tags<br>
+                    on their hearts<br>
+                    spit aliens out with naked<br>
+                    heels raw with contempt</li>
+            </ul>
+            <p>
+                <em>not from here   not from there   not from anywhere</em>
+            </p>
+            <hr>
+        </div>
+        <div>
+            <img src="../img/test-img.png"  width="900px"/>
+        </div>
+
+    </div>
+    <div class="poem-box bg-ylw" id="2">
+        <!--dreaming costs money-->
+        <p>
+            because dreaming costs money, my dear <br>
+            By Carolina Quintero
+        </p>
+        <p>
+            <em>where are you coming from</em>     always coming from home
+        </p>
+        <ul class="poem-offset-1">
+            <li>her spanish is solid like honey <br>
+                sounds candied with authenticity</li>
+            <li>futile tongue tastes of metal<br>
+                swallowing copper for ten years now</li>
+        </ul>
+        <p>
+            <em>where are you returning to</em>     there is a home here
+        </p>
+        <ul class="poem-offset-1">
+            <li>outh rooftops extinguish the American dream when her kids make her tongue the greatest comedian</li>
+            <li>mijo sticks his tongue to the roof of his mouth<br>
+                trapping the sour feeling of spanish—</li>
+        </ul>
+        <p>
+            <em>pull up to the right for inspection</em>     home seems far away now
+        </p>
+        <ul class="poem-offset-1">
+            <li>he watches his dented words become hail<br>
+                not escaping to contaminate her sweetness</li>
+            <li>mijo and her scavenge for the American dream<br>
+                dirt drinks their bloody fingernails</li>
+        </ul>
+        <p>
+            <em>they cut my tongue into thirds</em>   mijo cannot fake surprise
+        </p>
+        <ul class="poem-offset-3">
+            <li>he lets his tears clean<br>
+                the dirt under their nails</li>
+            <li>she understands politicians<br>
+                who wear discount tags<br>
+                on their hearts<br>
+                spit aliens out with naked<br>
+                heels raw with contempt</li>
+        </ul>
+        <p>
+            <em>not from here   not from there   not from anywhere</em>
+        </p>
+        <hr>
+    </div>
+    <div class="poem-box" id="3">
+
+    </div>
+
+</div>
+
+<script>
+//vertical scroll -> horizontal scroll
+const scrollableElement = document.querySelector(".horizontal-scroll")
+scrollableElement.addEventListener('wheel', (ev) => {
+    ev.preventDefault();
+    scrollableElement.scrollLeft += ev.deltaY + ev.deltaX;
+});
+
+
+
+</script>
+
+</body>
+
+</html>

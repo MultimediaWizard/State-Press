@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SP Scrollytelling Template</title>
+</head>
+
+<body>
+<!--
+ ______     ______   ______     ______   ______
+/\  ___\   /\__  _\ /\  __ \   /\__  _\ /\  ___\
+\ \___  \  \/_/\ \/ \ \  __ \  \/_/\ \/ \ \  __\
+ \/\_____\    \ \_\  \ \_\ \_\    \ \_\  \ \_____\
+  \/_____/     \/_/   \/_/\/_/     \/_/   \/_____/
+
+ ______   ______     ______     ______     ______
+/\  == \ /\  == \   /\  ___\   /\  ___\   /\  ___\
+\ \  _-/ \ \  __<   \ \  __\   \ \___  \  \ \___  \
+ \ \_\    \ \_\ \_\  \ \_____\  \/\_____\  \/\_____\
+  \/_/     \/_/ /_/   \/_____/   \/_____/   \/_____/
+-Zach Van Arsdale for The State Press (GPLv3) -->
+
+<figure class="full-width-container">
+    <!--Always import these scripts, intersection observer might still be needed for an older browser-->
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+
+
+<!--Styling-->
+<style>
+    .full-width-container {
+        left: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        max-width: 100vw;
+        position: relative;
+        right: 50%;
+        width: 100vw;
+    }
+    @media screen and (max-width: 480px){
+        .full-width-container {
+            width: auto;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+    }
+</style>
+<!--Scrollytelling Embed Feed-->
+
+<!--TEST-->
+    <div>
+        <img src="https://snworksceo.imgix.net/asp/577f95c0-23c1-43b4-8e2a-fc934aafc877.sized-1000x1000.png?w=1000">
+    </div>
+
+
+
+<!--Scrollytelling Script-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        //^this Listens to the page
+        //setting names for the various elements to use in functions
+        const scrollys = document.querySelectorAll(".scrolly");
+        scrollys.forEach(function (item) {
+            const scrolly = item;
+            //^this sets a name for each individual scrolly step
+            const scrollyGraphics = scrolly.querySelectorAll(".scrolly-graphic");
+            const scrollySteps = scrolly.querySelectorAll(".scrolly-step");
+
+            // release the scrollama (initialize)
+            const scroller = scrollama();
+            scroller
+                .setup({
+                    step: scrollySteps,
+                    offset: 0.85,
+                    debug: false,
+                    //    "step:" defines the step, "offset:" sets where the step triggers. 0.75 is 75% down from the top of the page. "debug:" allows you to see where the trigger is.
+                    //    SET DEBUG FALSE FOR PUBLICATION
+                })
+                //this sets what happens when the user scrolls into a step.
+                .onStepEnter((response) => {
+                    // { element, index, direction } is how this is written
+                    const selector = "." + response.element.dataset.step;
+                    const graphic = scrolly.querySelector(selector);
+                    scrollyGraphics.forEach(function (item) {
+                        if (item == graphic) {
+                            item.classList.add("is-active");
+                        } else {
+                            item.classList.remove("is-active");
+                        }
+                        const scrollyStepAlign = scrolly.querySelectorAll(".scrolly-step-content");
+                        // var right = scrollyStepAlign.classList.contains("right");
+                        // var left = scrollyStepAlign.classList.contains("left");
+
+                        const graphicFlex = scrolly.querySelector(".scrolly-graphics");
+
+                        var active = scrolly.getElementsByClassName(".is-active");
+                        if (scrollyGraphics.className === 'scrolly-graphic scrolly-graphic-1 right is-active'){
+                            graphicFlex.style.justifyContent='flex-end';
+                        }
+                        if (scrollyGraphics.className === 'scrolly-graphic scrolly-graphic-1 left is-active'){
+                            graphicFlex.style.justifyContent='flex-start'
+                        }
+                        else {
+                            graphicFlex.style.justifyContent='center'
+                        }
+
+                        // active.getAttribute(class) {
+                        //     if (right) {
+                        //         graphicFlex.style.justifyContent='flex-end'
+                        //     }
+                        //     if (left) {
+                        //         graphicFlex.style.justifyContent='flex-start'
+                        //     }
+                        //     else {
+                        //         graphicFlex.style.justifyContent='center'
+                        //     }
+                        // })
+
+                        //    ^This says that if the graphic # = the step # then that graphic has the class "is-active" and if it doesn't it removes the active class
+                    });
+                });
+        });
+
+    });
+</script>
+</figure>
+
+</body>
+
+</html>
