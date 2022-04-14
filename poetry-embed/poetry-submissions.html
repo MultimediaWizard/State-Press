@@ -8,6 +8,19 @@
 
 <body>
 <!--TODO *figure out plane paralax *figure out full page width, dev button that expands and retracts *turn off horizontal for mobile)-->
+<!--
+ ______     ______   ______     ______   ______
+/\  ___\   /\__  _\ /\  __ \   /\__  _\ /\  ___\
+\ \___  \  \/_/\ \/ \ \  __ \  \/_/\ \/ \ \  __\
+ \/\_____\    \ \_\  \ \_\ \_\    \ \_\  \ \_____\
+  \/_____/     \/_/   \/_/\/_/     \/_/   \/_____/
+
+ ______   ______     ______     ______     ______
+/\  == \ /\  == \   /\  ___\   /\  ___\   /\  ___\
+\ \  _-/ \ \  __<   \ \  __\   \ \___  \  \ \___  \
+ \ \_\    \ \_\ \_\  \ \_____\  \/\_____\  \/\_____\
+  \/_/     \/_/ /_/   \/_____/   \/_____/   \/_____/
+-Zach Van Arsdale for The State Press (GPLv3) -->
 
 <!--Styling-->
 <style>
@@ -147,6 +160,7 @@
         --txt-c: yellow;
         --f-size: 18px;
         --f-size-m: 16px;
+        /*different fonts*/
         --f-def: ;
         --f-allcap: ;
         --f-em: ;
@@ -175,35 +189,44 @@
     .poem-words{
         width: max-content;
         padding-right: 20px;
-        font-size: var(--f-size);
     }
+/*You are not supposed to use !important usually, but our site stylesheets are being an ass so this makes sure it bypasses them and shows up right*/
+    .poem-words p, .poem-words li{
+        font-size: var(--f-size) !important;
+        color: var(--txt-w) !important;
+    }
+
     /*Offsets are done by styling <ul>*/
     .poem-offset-1{
         list-style-type: none;
-        line-height: 0.5em;
+        line-height: 1.5em;
         margin-left: 1em;
     }
     .poem-offset-2{
         list-style-type: none;
-        margin-left: 1em;
+        margin-left: 2.25em;
 
     }
     .poem-offset-3 {
         list-style-type: none;
-        margin-left: 1.5em;
+        margin-left: 3.50em;
     }
     /*mobile styling for poems*/
     @media only screen and (max-width: 480px) {
         .poem-box{
             flex-direction: column;
-            width: 100vw;
+            width: auto;
             padding-right: 10px;
             padding-left: 10px;
         }
         .poem-words{
             width: 100%;
             padding-right: 20px;
+
             font-size: var(--f-size-m);
+        }
+        .poem-words p, .poem-words li{
+            font-size: var(--f-size-m) !important;
         }
         .poem-offset-1{
             list-style-type: none;
@@ -212,12 +235,12 @@
         }
         .poem-offset-2{
             list-style-type: none;
-            margin-left: 2.25em;
+            margin-left: 1.5em;
 
         }
         .poem-offset-3 {
             list-style-type: none;
-            margin-left: 3.50em;
+            margin-left: 2em;
         }
     }
     /*individual poem*/
@@ -366,12 +389,14 @@
 <script>
 
 
-    //vertical scroll -> horizontal scroll
-    let scrollableElement = document.querySelector(".horizontal-scroll")
-    scrollableElement.addEventListener('wheel', (ev) => {
-        ev.preventDefault();
-        scrollableElement.scrollLeft += ev.deltaY + ev.deltaX;
-    });
+    //vertical scroll -> horizontal scroll for desktop
+    if(screen.width >= 900){
+        let scrollableElement = document.querySelector(".horizontal-scroll")
+        scrollableElement.addEventListener('wheel', (ev) => {
+            ev.preventDefault();
+            scrollableElement.scrollLeft += ev.deltaY + ev.deltaX;
+        });
+    }
 
     //expand retract button
 
