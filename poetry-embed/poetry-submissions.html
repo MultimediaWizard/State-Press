@@ -294,12 +294,16 @@
         background-color: var(--txt-b);
         /*works fine on site but renders weird straight to browser ¯\_(ツ)_/¯*/
     }
+    .homes-col{
+        padding: 10px;
+        background-color: #000000a1;
+    }
     .homes p{
         font-variant-caps: all-small-caps;
     }
     @media only screen and (min-width: 900px) {
         .homes p {
-            background-color: #000000c9;
+            /*background-color: #000000c9;*/
             color: var(--txt-w);
         }
     }
@@ -485,7 +489,7 @@
         <div class="poem-box bg-train" id="2">
             <div class="poem-words homes multi-col">
 
-                <div>
+                <div class="homes-col">
                     <p>
                         <strong>A RECONCILIATION OF HOMES BY SONYA SHEPTUNOV</strong>
                     </p>
@@ -513,7 +517,7 @@
                         A DESERT BURIAL OF THE WORDS YOU CANNOT SPEAK
                     </p>
                 </div>
-                <div>
+                <div class="homes-col">
                     <p>
                         YOU LEARN ABOUT HISTORY, PREJUDICE, INDOCTRINATION<br>
                         A HEAVY FISH, SLIMY<br>
@@ -545,11 +549,13 @@
                         CRYING SILENT TEARS, AFRAID
                     </p>
                 </div>
-                <div>
-                    I LOOK EAST<br>
-                    UPON A FLOOD OF FACES FLEEING WEST<br>
-                    EACH FACE A HOME<br>
-                    TO WHAT COULD HAVE BEEN
+                <div class="homes-col">
+                    <p>
+                        I LOOK EAST<br>
+                        UPON A FLOOD OF FACES FLEEING WEST<br>
+                        EACH FACE A HOME<br>
+                        TO WHAT COULD HAVE BEEN
+                    </p>
                 </div>
             </div>
 
