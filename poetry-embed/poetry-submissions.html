@@ -40,8 +40,9 @@
         --txt-w: #f1f1f1;
         --txt-b: #231f20;
         --txt-c: yellow;
-        --f-size: 18px;
+        --f-size: 2vh;
         --f-size-m: 16px;
+        --f-lnhgt: 2.5vh;
         /*different fonts*/
         --f-def: ;
         --f-allcap: ;
@@ -194,6 +195,7 @@
 /*You are not supposed to use !important usually, but our site stylesheets are being an ass so this makes sure it bypasses them and shows up right*/
     .poem-words p, .poem-words li{
         font-size: var(--f-size) !important;
+        line-height: var(--f-lnhgt);
     }
     .poem-words p:last-child {
         padding-bottom: 20px;
