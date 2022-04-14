@@ -59,6 +59,16 @@
     .bg-red {
         background-color: var(--pm-red);
     }
+    .bg-train{
+        background-image: url("https://snworksceo.imgix.net/asp/59254ca2-b5f1-489a-8971-7d5f1a846b5d.sized-1000x1000.jpg?");
+    }
+    @media only screen and (max-width: 900px) {
+        .bg-train{
+            background-color: var(--pm-ylw);
+            background-image: none;
+        }
+    }
+
 
     /*containers*/
 
@@ -72,7 +82,7 @@
         border-radius: 0px;
     }
     /*turns off horizontal scroll for mobile*/
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 900px) {
         .horizontal-scroll{
             height: 100%;
             overflow-x: hidden;
@@ -105,7 +115,7 @@
         transition: all 220ms;
     }
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 900px) {
         .sp-minimize-button {
             margin-left: 85vw;
             margin-top: 90vh;
@@ -179,6 +189,16 @@
         /*quick fix for edge 17-18*/
         -webkit-backdrop-filter: blur(8px);
     }
+    @media only screen and (min-width: 900px) {
+        .mobile-only {
+            display: hidden;
+            padding: 0 !important;
+            border: 0 !important;
+            height: 1px !important;
+            width: 1px !important;
+            overflow: hidden;
+        }
+    }
 
     /*Each poem is contained in this box*/
     .poem-box{
@@ -196,6 +216,11 @@
     .poem-words p, .poem-words li{
         font-size: var(--f-size) !important;
         line-height: var(--f-lnhgt);
+    }
+    .multi-col{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
     .poem-words p:last-child {
         padding-bottom: 20px;
@@ -224,7 +249,7 @@
     }
 
     /*mobile styling for poems*/
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 900px) {
         .poem-box{
             flex-direction: column;
             width: auto;
@@ -269,8 +294,14 @@
         background-color: var(--txt-b);
         /*works fine on site but renders weird straight to browser ¯\_(ツ)_/¯*/
     }
-    .poem-2{
-        color: var(--txt-w)
+    .homes p{
+        font-variant-caps: all-small-caps;
+    }
+    @media only screen and (min-width: 900px) {
+        .homes p {
+            background-color: #000000c9;
+            color: var(--txt-w);
+        }
     }
 
 
@@ -301,7 +332,7 @@
         <div class="poem-box bg-ylw" id="1">
             <div class="poem-words dreaming-costs">
                 <p>
-                    because dreaming costs money, my dear <br>
+                    <strong>because dreaming costs money, my dear</strong> <br>
                     By Carolina Quintero
                 </p>
                     <p>
@@ -354,59 +385,181 @@
         </div>
         <!--diaspora face-->
         <div class="poem-img-cont">
-            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/673bcf5d-7113-4cb2-9235-1e38d1e55a23.sized-1000x1000.jpg?">
+            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/d0079a6c-4457-46a6-8de3-7d64aed1a145.sized-1000x1000.jpg?">
+<!--            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/673bcf5d-7113-4cb2-9235-1e38d1e55a23.sized-1000x1000.jpg?">-->
         </div>
+        <!--she's american-->
         <div class="poem-box bg-ylw" id="2">
-            <p>
-                because dreaming costs money, my dear <br>
-                By Carolina Quintero
-            </p>
-            <p>
-                <em>where are you coming from</em>     always coming from home
-            </p>
-            <ul class="poem-offset-1">
-                <li>her spanish is solid like honey <br>
-                    sounds candied with authenticity</li>
-                <li>futile tongue tastes of metal<br>
-                    swallowing copper for ten years now</li>
-            </ul>
-            <p>
-                <em>where are you returning to</em>     there is a home here
-            </p>
-            <ul class="poem-offset-1">
-                <li>outh rooftops extinguish the American dream when her kids make her tongue the greatest comedian</li>
-                <li>mijo sticks his tongue to the roof of his mouth<br>
-                    trapping the sour feeling of spanish—</li>
-            </ul>
-            <p>
-                <em>pull up to the right for inspection</em>     home seems far away now
-            </p>
-            <ul class="poem-offset-1">
-                <li>he watches his dented words become hail<br>
-                    not escaping to contaminate her sweetness</li>
-                <li>mijo and her scavenge for the American dream<br>
-                    dirt drinks their bloody fingernails</li>
-            </ul>
-            <p>
-                <em>they cut my tongue into thirds</em>   mijo cannot fake surprise
-            </p>
-            <ul class="poem-offset-3">
-                <li>he lets his tears clean<br>
-                    the dirt under their nails</li>
-                <li>she understands politicians<br>
-                    who wear discount tags<br>
-                    on their hearts<br>
-                    spit aliens out with naked<br>
-                    heels raw with contempt</li>
-            </ul>
-            <p>
-                <em>not from here   not from there   not from anywhere</em>
-            </p>
-            <hr>
-        </div>
-        <div class="poem-box" id="3">
+            <div class="poem-words shes-american">
+                <p>
+                    <strong>She’s <strike>American</strike></strong> <br>
+                    By NAME
+                </p>
+                <p>
+                    On the terrace of our worn-down tin-roofed home, the American flag flies out of place.<br>
+                    It is July, and my father insists<br>
+                    on celebrating his American heritage.
+                </p>
+                <p>
+                    Our ancestry says otherwise.
+                </p>
+                <p>
+                    At school, we're told to only speak English. “You'll be more valuable,” they say.<br>
+                    Frightened of being punished and fined, we speak in hushed voices.
+                </p>
+                <p>
+                    Splashes of water hit my feet.<br>
+                    I bask in the warm sunlight.<br>
+                    Across the pool, my mother calls me into the shade. “You wouldn't want to get darker,” she says.
+                </p>
+                <p>
+                    My pass to the American Dream<br>
+                    is tucked between the pages of my passport Flight PR 102. Gate N6. Seat 71C.<br>
+                    Manila to Los Angeles.
+                </p>
+                <p>
+                    The plane ascends<br>
+                    Through the porthole,<br>
+                    I wave goodbye to all I have ever known. My mother stays behind,<br>
+                    yet her comments linger on.
+                </p>
+                <p>
+                    Once there, who will I become?
+                </p>
+                <p>
+                    The school bell rings. They tell us
+                    to stand and face the flag, to pledge
+                    allegiance in a crowd of unfamiliar faces.
+                </p>
+                <p>
+                    Loyalty to my country unfaltering, I stay silent in my seat.
+                </p>
+            </div>
 
         </div>
+        <!--transition to hibiscus-->
+        <div class="poem-img-cont">
+            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/a3e01968-7ca0-4feb-94bf-a9c10ffd95d6.sized-1000x1000.jpg?">
+<!--            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/de19bb81-b478-4e42-bdcb-8bcea1534165.sized-1000x1000.jpg?">-->
+        </div>
+        <!--homeland-->
+        <div class="poem-box bg-ylw" id="2">
+            <div class="poem-words homeland">
+                <div style="display: flex; justify-content: center; height: fit-content">
+                    <p style="padding-bottom: 0; margin-bottom: 0;">
+                    <strong>Homeland</strong> <br>
+                    By NAME
+                    </p>
+                </div>
+                <p>
+                    My selves, they fold and bend like the<br>
+                    Hibiscus that grew in our garden,<br>
+                    Like Baba’s black-charred tomatoes on sheesh,<br>
+                    Spitting red juice from its lava core:<br>
+                </p>
+                    <ul class="poem-offset-1">
+                        <li>My parents’ foreign lands etched into the<br>
+                        Tissues of my being—the mass graves I<br>
+                        Escaped, born a citizen in the Land of the Free,<br>
+                        The Land of the Brave, Lady Liberty</li>
+                    </ul>
+                <p>
+                    Kneading my selves into a single dough,<br>
+                    Just like the Burek Mama crafts—<br>
+                    Sunlight from the kitchen window,<br>
+                    Shining on the white of the flour,<br>
+                    Bright yellow eggs whisked into a larger circle,<br>
+                </p>
+                    <ul class="poem-offset-1">
+                        <li>Rounded by my multiple selves.</li>
+                    </ul>
+                <p></p>
+            </div>
+
+        </div>
+        <!--transition to hibiscus-->
+        <div class="poem-img-cont">
+            <img class="poem-img-full mobile-only" src="https://snworksceo.imgix.net/asp/59254ca2-b5f1-489a-8971-7d5f1a846b5d.sized-1000x1000.jpg?">
+        </div>
+        <!--HOMES-->
+        <div class="poem-box bg-train" id="2">
+            <div class="poem-words homes multi-col">
+
+                <div>
+                    <p>
+                        <strong>A RECONCILIATION OF HOMES BY SONYA SHEPTUNOV</strong>
+                    </p>
+                    <p>
+                        THERE’S A PAPER IN MY HAND<br>
+                        FRAYED, SOFT, WORN WITH AGE<br>
+                        FOLDED AND UNFOLDED<br>
+                        A RECORD OF HOMES; I’M A HERMIT CRAB<br>
+                        ALL MY SHELLS ARE IMMORTALIZED
+                    </p>
+                    <p>
+                        A LONG-FORGOTTEN NAME<br>
+                        STARES ME IN THE FACE<br>
+                        BLUE EYES, BLONDE HAIR. A GIRL<br>
+                        WHOM I ONCE WALKED WITH, HAND IN HAND<br>
+                        THROUGH GRASSY FIELDS AND COBBLED STREETS
+                    </p>
+                    <p>
+                        YOU LEARN TO SPEAK THE LANGUAGE OF IRON; FORCEFUL, BRUTAL<br>
+                        IT TWISTS YOUR TONGUE AND SCULPTS YOUR MIND<br>
+                        AND WHEN A STRANGER COMES ALONG, SO FAMILIAR<br>
+                        FLUENT IN THE LANGUAGE OF SUNFLOWERS<br>
+                        THE SEA OF WORDS YOU WANT TO SAY DRIES TO SAND ON YOUR LIPS<br>
+                        AND THE PRECIPICE BETWEEN YOU YAWNS WIDER<br>
+                        A DESERT BURIAL OF THE WORDS YOU CANNOT SPEAK
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        YOU LEARN ABOUT HISTORY, PREJUDICE, INDOCTRINATION<br>
+                        A HEAVY FISH, SLIMY<br>
+                        SWIMMING THROUGH OIL AND WATER<br>
+                        EXPOSING A NUANCE SO BRIEF, JUST ENOUGH TO FREEZE YOUR MIND<br>
+                        IN A STATE OF ETERNAL DOUBT; CONFUSION<br>
+                        COULD OIL AND WATER COEXIST?
+                    </p>
+                    <p>
+                        FAR AWAY AND LONG AGO AN IRON WALL HAD FALLEN<br>
+                        TWO LOVERS MADE A CHOICE<br>
+                        NOT TO RUN, BUT TO GO TOWARD<br>
+                        A LAND VENEERED IN HOPE<br>
+                        A HEAVY FEELING POOLS IN MY GUT<br>
+                        WHEN TWO DAYS DAYS SHY OF TWENTY YEARS<br>
+                        A GIFT ARRIVES ON MY DOORSTEP (IT’S MY LIFE)<br>
+                        A DEBT I CAN NEVER REPAY
+                    </p>
+                    <p>
+                        THERE’S A PAPER IN MY HAND<br>
+                        HOMES THAT I’VE OUTGROWN, SCRIBBLED<br>
+                        A ROADMAP OF THE PATH THAT LED ME<br>
+                        TO THE LIMINAL SPACE ON WHICH I STAND<br>
+                        INVASION. A WORD SO INTIMATELY VIOLENT<br>
+                        HOME BURNS AN OCEAN AWAY<br>
+                        SHRAPNEL, BRICK AND RUBBLE<br>
+                        BURYING ITSELF IN HEARTS, SCREAMING<br>
+                        I VIEW THE WORLD THROUGH THE GLASS, UNSCATHED<br>
+                        CRYING SILENT TEARS, AFRAID
+                    </p>
+                </div>
+                <div>
+                    I LOOK EAST<br>
+                    UPON A FLOOD OF FACES FLEEING WEST<br>
+                    EACH FACE A HOME<br>
+                    TO WHAT COULD HAVE BEEN
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
     </div>
 </div>
 
