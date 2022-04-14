@@ -30,6 +30,37 @@
 
     }
 
+    /*color-font-stack*/
+    /*note: these are set as global variables so changing them is easier across the whole doc*/
+    :root {
+        --pm-grn: green;
+        --pm-ylw: #f7c413;
+        --pm-red: red;
+        --pm-blue: lightblue;
+        --txt-w: #f1f1f1;
+        --txt-b: #231f20;
+        --txt-c: yellow;
+        --f-size: 18px;
+        --f-size-m: 16px;
+        /*different fonts*/
+        --f-def: ;
+        --f-allcap: ;
+        --f-em: ;
+        --f-title: ;
+    }
+
+    .bg-grn {
+        background-color: var(--pm-grn);
+    }
+    .bg-ylw {
+        background-color: var(--pm-ylw);
+    }
+    .bg-red {
+        background-color: var(--pm-red);
+    }
+
+    /*containers*/
+
     .horizontal-scroll{
         height: 100%;
         overflow-x: scroll;
@@ -148,52 +179,24 @@
         -webkit-backdrop-filter: blur(8px);
     }
 
-    /*color-font-stack*/
-    /*note: these are set as global variables so changing them is easier across the whole doc*/
-    :root {
-        --grn: green;
-        --ylw: yellow;
-        --red: red;
-        --blue: lightblue;
-        --txt-w: #f1f1f1;
-        --txt-b: black;
-        --txt-c: yellow;
-        --f-size: 18px;
-        --f-size-m: 16px;
-        /*different fonts*/
-        --f-def: ;
-        --f-allcap: ;
-        --f-em: ;
-        --f-title: ;
-    }
-
-    .bg-grn {
-        background-color: var(--grn);
-    }
-    .bg-ylw {
-        background-color: var(--ylw);
-    }
-    .bg-red {
-        background-color: var(--red);
-    }
-
     /*Each poem is contained in this box*/
     .poem-box{
         display: flex;
         flex-direction: row;
         width: 100vw;
-        padding-right: 10px;
-        padding-left: 10px;
+        padding-right: 40px;
+        padding-left: 45px;
     }
 
     .poem-words{
         width: max-content;
-        padding-right: 20px;
     }
 /*You are not supposed to use !important usually, but our site stylesheets are being an ass so this makes sure it bypasses them and shows up right*/
     .poem-words p, .poem-words li{
         font-size: var(--f-size) !important;
-        color: var(--txt-w) !important;
+    }
+    .poem-words p:last-child {
+        padding-bottom: 20px;
     }
 
     /*Offsets are done by styling <ul>*/
@@ -211,19 +214,23 @@
         list-style-type: none;
         margin-left: 3.50em;
     }
+    .poem-img-full{
+        height: 100%;
+        width: auto;
+        /*site will screw you with max-width=100% for horizontal scrolling if you don't set it to none*/
+        max-width: none;
+    }
+
     /*mobile styling for poems*/
     @media only screen and (max-width: 480px) {
         .poem-box{
             flex-direction: column;
             width: auto;
-            padding-right: 10px;
-            padding-left: 10px;
+            padding-right: 18px;
+            padding-left: 18px;
         }
         .poem-words{
             width: 100%;
-            padding-right: 20px;
-
-            font-size: var(--f-size-m);
         }
         .poem-words p, .poem-words li{
             font-size: var(--f-size-m) !important;
@@ -242,11 +249,24 @@
             list-style-type: none;
             margin-left: 2em;
         }
-    }
-    /*individual poem*/
-    .dreaming-costs{
-        color: var(--txt-w);
+        .poem-img-cont{
+            width: fit-content;
+            height: fit-content;
         }
+        .poem-img-full{
+            /*height: auto;*/
+            width: 100%;
+            max-width: none;
+        }
+    }
+    /*individual poems*/
+    .dreaming-costs{
+        color: var(--txt-b) !important;
+        }
+    .dreaming-costs hr{
+        background-color: var(--txt-b);
+        /*works fine on site but renders weird straight to browser ¯\_(ツ)_/¯*/
+    }
     .poem-2{
         color: var(--txt-w)
     }
@@ -271,8 +291,12 @@
             <p class="visually-hidden">Select to close the page</p>
         </svg>
 <!--poem time-->
-        <div class="poem-box bg-grn" id="1">
-    <!--dreaming costs money-->
+<!--diaspora plane-->
+        <div class="poem-img-cont">
+            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/a1a6b205-2448-4dc7-968c-37a1a848365c.sized-1000x1000.jpg?">
+        </div>
+        <!--dreaming costs money-->
+        <div class="poem-box bg-ylw" id="1">
             <div class="poem-words dreaming-costs">
                 <p>
                     because dreaming costs money, my dear <br>
@@ -323,15 +347,14 @@
                 <p>
                     <em>not from here   not from there   not from anywhere</em>
                 </p>
-                <hr>
-            </div>
-            <div>
-                <img src="../img/test-img.png"  width="900px"/>
             </div>
 
         </div>
+        <!--diaspora face-->
+        <div class="poem-img-cont">
+            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/673bcf5d-7113-4cb2-9235-1e38d1e55a23.sized-1000x1000.jpg?">
+        </div>
         <div class="poem-box bg-ylw" id="2">
-            <!--dreaming costs money-->
             <p>
                 because dreaming costs money, my dear <br>
                 By Carolina Quintero
