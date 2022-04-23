@@ -36,6 +36,7 @@
     :root {
         --pm-grn: green;
         --pm-ylw: #f7c413;
+        --pm-dylw: #f5b21a;
         --pm-red: red;
         --pm-blue: lightblue;
         --pm-org: #d96f23;
@@ -45,11 +46,6 @@
         --f-size: 2vh;
         --f-size-m: 16px;
         --f-lnhgt: 2.5vh;
-        /*different fonts*/
-        --f-def: ;
-        --f-allcap: ;
-        --f-em: ;
-        --f-title: ;
     }
 
     .bg-grn {
@@ -103,7 +99,7 @@
     .sp-minimize-button{
         position: fixed;
         margin-left: 90vw;
-        margin-top: 90vh;
+        margin-top: 5vh;
         margin-right: 0;
         cursor:pointer;
         width: 37px;
@@ -123,7 +119,7 @@
     @media only screen and (max-width: 900px) {
         .sp-minimize-button {
             margin-left: 85vw;
-            margin-top: 90vh;
+            margin-top: 5vh;
             width: 25px;
             height: 25px;
         }
@@ -194,16 +190,16 @@
         /*quick fix for edge 17-18*/
         -webkit-backdrop-filter: blur(8px);
     }
-    @media only screen and (min-width: 900px) {
-        .mobile-only {
-            display: hidden;
-            padding: 0 !important;
-            border: 0 !important;
-            height: 1px !important;
-            width: 1px !important;
-            overflow: hidden;
-        }
-    }
+    /*@media only screen and (min-width: 900px) {*/
+    /*    .mobile-only {*/
+    /*        display: hidden;*/
+    /*        padding: 0 !important;*/
+    /*        border: 0 !important;*/
+    /*        height: 1px !important;*/
+    /*        width: 1px !important;*/
+    /*        overflow: hidden;*/
+    /*    }*/
+    /*}*/
 
     /*Each poem is contained in this box*/
     .poem-box{
@@ -217,15 +213,29 @@
     .poem-words{
         width: max-content;
     }
-/*You are not supposed to use !important usually, but our site stylesheets are being an ass so this makes sure it bypasses them and shows up right*/
     .poem-words p, .poem-words li{
         font-size: var(--f-size) !important;
         line-height: var(--f-lnhgt);
+        /*You are not supposed to use !important usually, but our site stylesheets are being an ass so this makes sure it bypasses them and shows up right*/
+    }
+    .poem-words-lg{
+        width: max-content;
+    }
+    .poem-words-lg p, .poem-words-lg li{
+        font-size: 2.5vh !important;
+        /*this is !important cause our CMS is mean*/
     }
     .multi-col{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+    @media only screen and (max-width: 900px) {
+        .multi-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
     }
     .poem-words p:last-child {
         padding-bottom: 20px;
@@ -266,7 +276,19 @@
         }
         .poem-words p, .poem-words li{
             font-size: var(--f-size-m) !important;
+            /*this is !important cause our CMS is mean*/
         }
+        .poem-words-lg{
+            width: 100%;
+        }
+        .poem-words-lg p, .poem-words-lg li{
+            font-size: 3vh !important;
+            /*this is !important cause our CMS is mean*/
+        }
+        .poem-words-lg p:last-child {
+            padding-bottom: 0px;
+        }
+
         .poem-offset-1{
             list-style-type: none;
             line-height: 1.5em;
@@ -301,16 +323,17 @@
     }
     .homes-col{
         padding: 10px;
-        background-color: #000000a1;
+        /*background-color: #000000a1;*/
+    }
+    @media only screen and (max-width: 900px) {
+        .homes-col{
+            padding: 0px;
+            margin-top: -1em;
+        }
     }
     .homes p{
         font-variant-caps: all-small-caps;
-    }
-    @media only screen and (min-width: 900px) {
-        .homes p {
-            /*background-color: #000000c9;*/
-            color: var(--txt-w);
-        }
+        color: var(--txt-b);
     }
     .idaho-summer{
         width: 624px;
@@ -322,7 +345,7 @@
             hyphens: manual;
         }
     }
-}
+
 
 
 </style>
@@ -400,6 +423,7 @@
                 <p>
                     <em>not from here   not from there   not from anywhere</em>
                 </p>
+                <!--CHECKED 4/23/22-->
             </div>
 
         </div>
@@ -413,10 +437,11 @@
             <div class="poem-words shes-american">
                 <p>
                     <strong>She’s <strike>American</strike></strong> <br>
-                    By NAME
+                    By Monaliza Hernandez
                 </p>
                 <p>
-                    On the terrace of our worn-down tin-roofed home, the American flag flies out of place.<br>
+                    On the terrace of our worn-down tin-roofed home,<br>
+                    the American flag flies out of place.<br>
                     It is July, and my father insists<br>
                     on celebrating his American heritage.
                 </p>
@@ -424,36 +449,43 @@
                     Our ancestry says otherwise.
                 </p>
                 <p>
-                    At school, we're told to only speak English. “You'll be more valuable,” they say.<br>
-                    Frightened of being punished and fined, we speak in hushed voices.
+                    At school, we're told to only speak English.<br>
+                    “You'll be more valuable,” they say.<br>
+                    Frightened of being punished and fined,<br>
+                    we speak in hushed voices.
                 </p>
                 <p>
                     Splashes of water hit my feet.<br>
                     I bask in the warm sunlight.<br>
-                    Across the pool, my mother calls me into the shade. “You wouldn't want to get darker,” she says.
+                    Across the pool, my mother calls me into the shade.<br>
+                    “You wouldn't want to get darker,” she says.
                 </p>
                 <p>
                     My pass to the American Dream<br>
-                    is tucked between the pages of my passport Flight PR 102. Gate N6. Seat 71C.<br>
+                    is tucked between the pages of my passport<br>
+                    Flight PR 102. Gate N6. Seat 71C.<br>
                     Manila to Los Angeles.
                 </p>
                 <p>
                     The plane ascends<br>
                     Through the porthole,<br>
-                    I wave goodbye to all I have ever known. My mother stays behind,<br>
+                    I wave goodbye to all I have ever known.<br>
+                    My mother stays behind,<br>
                     yet her comments linger on.
                 </p>
                 <p>
                     Once there, who will I become?
                 </p>
                 <p>
-                    The school bell rings. They tell us
-                    to stand and face the flag, to pledge
+                    The school bell rings. They tell us<br>
+                    to stand and face the flag, to pledge<br>
                     allegiance in a crowd of unfamiliar faces.
                 </p>
                 <p>
-                    Loyalty to my country unfaltering, I stay silent in my seat.
+                    Loyalty to my country unfaltering,<br>
+                    I stay silent in my seat.
                 </p>
+<!--CHECKED 4/23/22-->
             </div>
 
         </div>
@@ -463,7 +495,7 @@
 <!--            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/de19bb81-b478-4e42-bdcb-8bcea1534165.sized-1000x1000.jpg?">-->
         </div>
         <!--homeland-->
-        <div class="poem-box bg-ylw" id="3">
+        <div class="poem-box" style="background-color: var(--pm-dylw)" id="3">
             <div class="poem-words homeland">
                 <div style="display: flex; justify-content: center; height: fit-content">
                     <p style="padding-bottom: 0; margin-bottom: 0;">
@@ -497,13 +529,13 @@
             </div>
 
         </div>
-        <!--transition to hibiscus-->
+        <!--train-->
         <div class="poem-img-cont">
-            <img class="poem-img-full mobile-only" src="https://snworksceo.imgix.net/asp/59254ca2-b5f1-489a-8971-7d5f1a846b5d.sized-1000x1000.jpg?">
+            <img class="poem-img-full" src="https://snworksceo.imgix.net/asp/59254ca2-b5f1-489a-8971-7d5f1a846b5d.sized-1000x1000.jpg?">
         </div>
         <!--HOMES incl. train photo-->
-        <div class="poem-box bg-train" id="4">
-            <div class="poem-words homes multi-col">
+        <div class="poem-box" style="background-color: var(--pm-dylw)" id="4">
+            <div class="poem-words-lg homes multi-col">
 
                 <div class="homes-col">
                     <p>
