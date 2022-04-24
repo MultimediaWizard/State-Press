@@ -7,7 +7,6 @@
 </head>
 
 <body>
-<!--TODO *figure out plane paralax *figure out full page width, dev button that expands and retracts *turn off horizontal for mobile)-->
 <!--
  ______     ______    ______     ______   ______
 /\  ___\   /\__  _\  /\  __ \   /\__  _\ /\  ___\
@@ -26,6 +25,7 @@
 <!--Styling-->
 <style>
 /*There is js at the bottom that turn vertical scroll -> horizontal*/
+/*If anything is redundant it is because my mind was destroyed by college*/
 
     .sp-embed{
 
@@ -43,9 +43,11 @@
         --txt-w: #f1f1f1;
         --txt-b: #231f20;
         --txt-c: #f3d5d5;
-        --f-size: 2vh;
-        --f-size-m: 16px;
+        --f-size: 1.8vh;
+        --f-size-m: 14px;
+        /*merriweather is large*/
         --f-lnhgt: 2.5vh;
+        --f-lnhgt-m: 1.5em;
     }
 
     .bg-grn {
@@ -96,38 +98,38 @@
         width: 60px;
     }
 
-    .sp-minimize-button{
+    .sp-minimize-button-cont{
         position: fixed;
         margin-left: 90vw;
         margin-top: 5vh;
         margin-right: 0;
-        cursor:pointer;
-        width: 37px;
-        height: 37px;
-        stroke: currentColor;
-        fill: currentColor;
-        z-index: 2;
-        font-size: 3em;
+    }
+
+    .sp-minimize-button{
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
         vector-effect: non-scaling-stroke;
-        border: 0;
-        padding: 8px;
-        background: #A7BCE6;
+        padding: 18px;
+        background: #231f20;
         border-radius: 50%;
         transition: all 220ms;
     }
 
     @media only screen and (max-width: 900px) {
-        .sp-minimize-button {
-            margin-left: 85vw;
-            margin-top: 5vh;
-            width: 25px;
-            height: 25px;
+        .sp-minimize-button-cont {
+            margin-left: 75vw;
+            margin-top: 3vh;
+        }
+        .sp-minimize-button{
+            width: 32px;
+            height: 32px;
         }
     }
 
     .sp-minimize-button:hover,.sp-minimize-button:focus {
         transform: rotateZ(90deg);
-        background: #879ed7;
+        background: #83001e;
     }
 
     .sp-minimize-button-hidden{
@@ -205,29 +207,32 @@
     .poem-box{
         display: flex;
         flex-direction: row;
-        width: 100vw;
+        width: 100vw !important;
         padding-right: 40px;
         padding-left: 45px;
     }
 
     .poem-words{
         width: max-content;
+        margin-top: 1em;
     }
     .poem-words p, .poem-words li{
         font-size: var(--f-size) !important;
-        line-height: var(--f-lnhgt);
+        line-height: var(--f-lnhgt) !important;
         /*You are not supposed to use !important usually, but our site stylesheets are being an ass so this makes sure it bypasses them and shows up right*/
     }
     .poem-words-dbl-space{
         width: max-content;
+        margin-top: 1em;
     }
     .poem-words-dbl-space p, .poem-words-dbl-space li{
         font-size: var(--f-size) !important;
-        line-height: calc((var(--f-lnhgt)) * 1.5);
+        line-height: calc((var(--f-lnhgt)) * 1.5) !important;
         /*You are not supposed to use !important usually, but our site stylesheets are being an ass so this makes sure it bypasses them and shows up right*/
     }
     .poem-words-lg{
         width: max-content;
+        margin-top: 1em;
     }
     .poem-words-lg p, .poem-words-lg li{
         font-size: 2.5vh !important;
@@ -237,6 +242,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        margin-top: 10px;
     }
     @media only screen and (max-width: 900px) {
         .multi-col {
@@ -247,6 +253,7 @@
     }
     .poem-words{
         padding-bottom: 20px;
+        padding-top: 20px;
     }
 
     /*Offsets are done by styling <ul>*/
@@ -281,27 +288,32 @@
         }
         .poem-words{
             width: 100%;
+            margin-top: 1em;
         }
         .poem-words p, .poem-words li{
             font-size: var(--f-size-m) !important;
+            line-height: var(--f-lnhgt-m) !important;
             /*this is !important cause our CMS is mean*/
         }
         .poem-words-dbl-space{
             width: 100%;
+            margin-top: 1em;
         }
         .poem-words-dbl-space p, .poem-words-dbl-space li{
             font-size: var(--f-size-m) !important;
+            line-height: calc((var(--f-lnhgt-m)) * 1.5) !important;
             /*this is !important cause our CMS is mean*/
         }
         .poem-words-lg{
             width: 100%;
+            margin-top: 1em;
         }
         .poem-words-lg p, .poem-words-lg li{
-            font-size: 3vh !important;
+            font-size: 16px !important;
             /*this is !important cause our CMS is mean*/
         }
         .poem-words-lg p:last-child {
-            padding-bottom: 0px;
+            padding-bottom: 0px !important;
         }
 
         .poem-offset-1{
@@ -332,17 +344,13 @@
     .dreaming-costs{
         color: var(--txt-b) !important;
         }
-    .dreaming-costs hr{
-        background-color: var(--txt-b);
-        /*works fine on site but renders weird straight to browser ¯\_(ツ)_/¯*/
-    }
     .homes-col{
-        padding: 10px;
+        padding: 10px !important;
         /*background-color: #000000a1;*/
     }
     @media only screen and (max-width: 900px) {
         .homes-col{
-            padding: 0px;
+            padding: 0px !important;
             margin-top: -1em;
         }
     }
@@ -353,16 +361,21 @@
     .idaho-summer{
         width: 624px;
         hyphens: none;
-        color: var(--txt-c);
+        color: var(--txt-c) !important;
+    }
+    .idaho-summer p{
+        color: var(--txt-c) !important;
     }
     @media only screen and (max-width: 900px) {
         .idaho-summer {
             width: auto;
             hyphens: manual;
+            color: var(--txt-c) !important;
+        /*why ceo why*/
         }
     }
     .mother-tongue p{
-        color: var(--txt-c);
+        color: var(--txt-c)!important;
     }
     .multi-title{
         padding: 10px 0 0 10px; margin-bottom: -20px;
@@ -410,12 +423,13 @@
 }
 
 /*shoot me now*/
+/*CMS being wack, remove?*/
 .center-hack{
-    padding-bottom: 0; margin-bottom: -20px;
+    /*padding-bottom: 0; margin-bottom: -20px;*/
 }
 @media only screen and (max-width: 900px) {
     .center-hack {
-        padding-bottom: 0; margin-bottom: -15px;
+        /*padding-bottom: 0; margin-bottom: -15px;*/
     }
 }
 
@@ -432,13 +446,16 @@
     </div>
     <div class="horizontal-scroll">
 <!--button time-->
-        <svg class="sp-minimize-button sp-minimize-button-hidden">
-            <g>
-                <path d="M3 25L14.2157 13.7843L25 3" stroke="#516da6" stroke-width="6" stroke-linecap="round"/>
-                <path d="M3 3L14.2157 14.2157L25 25" stroke="#516da6" stroke-width="6" stroke-linecap="round"/>
-            </g>
-            <p class="visually-hidden">Select to close the page</p>
-        </svg>
+        <div class="sp-minimize-button-cont">
+            </svg>
+            <svg style="box-sizing: content-box" class="sp-minimize-button sp-minimize-button-hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny" width="20" height="20" viewBox="0 0 28 28" fill="none">
+                <g>
+                    <path d="M3 25L14.2157 13.7843L25 3" stroke="#f1f1f1" stroke-width="4.5" stroke-linecap="round"/>
+                    <path d="M3 3L14.2157 14.2157L25 25" stroke="#f1f1f1" stroke-width="4.5" stroke-linecap="round"/>
+                </g>
+                <p class="visually-hidden">Select to close the page</p>
+            </svg>
+        </div>
 <!--poem time-->
         <!--diaspora plane-->
         <div class="poem-img-cont">
@@ -579,7 +596,7 @@
                         </p>
                     </div>
                     <div style="padding-bottom: 0; margin-bottom: 0;">
-                        <p style="padding-bottom: 0; margin-bottom: 0;">
+                        <p style="padding-bottom: 0;">
                             By Sami Al-Asady
                         </p>
                     </div>
@@ -952,12 +969,12 @@
                 <!--hacked together centered title-->
                 <div style="display: flex; height: fit-content; flex-direction: column; align-items: center;">
                     <div class="center-hack">
-                        <p style="padding-bottom: 0; margin-bottom: 0; line-height: var(--f-lnhgt);">
+                        <p style="padding-bottom: 0; margin-bottom: 0; line-height: var(--f-lnhgt)!important;">
                             <strong>Desired Destiny</strong>
                         </p>
                     </div>
                     <div style="padding-bottom: 0; margin-bottom: 0;">
-                        <p style="padding-bottom: 0; margin-bottom: 0; line-height: var(--f-lnhgt);">
+                        <p style="padding-bottom: 0; line-height: var(--f-lnhgt);">
                             By Ema Angulo-Rodríguez
                         </p>
                     </div>
