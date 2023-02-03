@@ -44,6 +44,7 @@
         --txt-b: #231f20;
         --txt-c: #f3d5d5;
         --f-size: 1.4vh;
+/*      /*vh allows it to change based on screen height*/
         --f-size-m: 14px;
         /*merriweather is large*/
         --f-lnhgt: 2.0vh;
@@ -281,6 +282,7 @@
     }
     .poem-img-full{
         height: -webkit-fill-available;
+        /*must use webkit here for safari*/
         width: auto;
         /*site will screw you with max-width=100% for horizontal scrolling if you don't set it to none*/
         max-width: none;
@@ -433,7 +435,7 @@
 }
 
 /*shoot me now*/
-/*CMS being wack, remove?*/
+/*CMS being wack*/
 .center-hack{
     /*padding-bottom: 0; margin-bottom: -20px;*/
 }
@@ -442,7 +444,7 @@
         /*padding-bottom: 0; margin-bottom: -15px;*/
     }
 }
-    
+/*puts above CEO's recommended articles*/
 .put-on-top {
     z-index: 3;
     }
@@ -486,6 +488,7 @@
                         <em>where are you coming from</em>     always coming from home
                     </p>
                     <ul class="poem-offset-1">
+<!--IMPORTANT: I used unordered lists <ul> to offset the poem stanzas. the class determines the indent.-->
                         <li>her spanish is solid like honey <br>
                             sounds candied with authenticity</li>
                         <p></p>
