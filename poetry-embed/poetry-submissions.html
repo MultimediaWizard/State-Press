@@ -442,13 +442,17 @@
         /*padding-bottom: 0; margin-bottom: -15px;*/
     }
 }
+    
+.put-on-top {
+    z-index: 3;
+    }
 
 
 
 </style>
 
 <!--embed start-->
-<div class="sp-embed sp-embed-minimized">
+<div class="sp-embed sp-embed-minimized put-on-top">
 <!--container below prevents interaction until expanded and shows preview-->
     <div id="disable-interact" class="disable-interaction">
         <img src="">
@@ -1059,7 +1063,7 @@
     let minimizeButton = document.querySelector(".sp-minimize-button");
 
     expandButton.addEventListener("mousedown", e => {
-        embed.setAttribute("class","sp-embed sp-embed-expanded")
+        embed.setAttribute("class","sp-embed sp-embed-expanded put-on-top")
         disabledInteract.setAttribute("class","enable-interaction")
         minimizeButton.setAttribute("class","sp-minimize-button")
 
